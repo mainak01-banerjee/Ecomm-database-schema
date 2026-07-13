@@ -11,16 +11,16 @@
 ## Users
 #### Description :- This table is used to store userdetails and is filled by the user while signing in.
   colums:-<br>
-  -user_id(pk) number primary key ,<br>
-  -username varchar unique not null,<br>
-  -age number(2) ,<br>
-  -password(encrypted) varchar(300) not null ,<br>
-  -email unique not null,<br>
-  -phone unique not null,<br>
-  -user_type char(1) not null,<br>
-  -is_email_verified char(1) not null default 'N' check(is_email_banned in ('Y','N')),<br>
-  -is_active char(1) not null default 'N' check(is_active in('Y','N)),<br>
-  -is_banned char(1) not null default 'N'check(is_banned in('Y','N))<br>
+  - user_id(pk) number primary key ,<br>
+  - username varchar unique not null,<br>
+  - age number(2) ,<br>
+  - password(encrypted) varchar(300) not null ,<br>
+  - email unique not null,<br>
+  - phone unique not null,<br>
+  - user_type char(1) not null,<br>
+  - is_email_verified char(1) not null default 'N' check(is_email_banned in ('Y','N')),<br>
+  - is_active char(1) not null default 'N' check(is_active in('Y','N)),<br>
+  - is_banned char(1) not null default 'N'check(is_banned in('Y','N))<br>
   ##### SQL to create table
   create table users(<br>
 user_id int primary key,<br>
@@ -37,13 +37,24 @@ is_banned char(1) default 'N' check(is_banned in('Y','N'))<br>
   ## Addresses
   #### Description :- This table stores each users address.each user can have multiple addresses.
   columns:-<br>
-  -addr_id (pk) number primary key,<br>
-  -house_no varchar(20),<br>
-  -floor_no varchar(20),<br>
-  -street_no varchar(200) not null,<br>
-  -land_mark varchar(100),
-  -city_id number references cities(c_id),<br>
-  -user_id references users(user_id)<br>
+  - addr_id (pk) number primary key,<br>
+  - house_no varchar(20),<br>
+  - floor_no varchar(3),<br>
+  - street_name varchar(500) not null,<br>
+  - land_mark varchar(100),<br>
+  - city_id number references cities(c_id),<br>
+  - user_id references users(user_id)<br>
+  #### SQL to create table
+  create table addresses (<br>
+addr_id int primary key,<br>
+house_no varchar(20) ,<br>
+floor_no varchar(3),<br>
+street_name varchar(500) not null,<br>
+land_mark varchar(100) ,<br>
+user_id int ,<br>
+foreign key (user_id) references users(user_id)<br>
+);<br>
+- we add column city_id later after creating the cities table.
   ## Cities
   #### Description :- This table stores the cities and their pincode that the business offers delivery to.
   columns:-<br>
