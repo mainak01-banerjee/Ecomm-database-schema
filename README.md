@@ -58,9 +58,23 @@ foreign key (user_id) references users(user_id)<br>
   ## Cities
   #### Description :- This table stores the cities and their pincode that the business offers delivery to.
   columns:-<br>
-  -c_id number Primary key,<br>
-  -c_name varchar(50) unique not null,<br>
-  -pincode char(6) unique not null,<br>
-  -state varchar(50) not null,
-  -country varchar(50) not null<br>
-  
+  - c_id number Primary key,<br>
+  - c_name varchar(50) unique not null,<br>
+  - pincode char(6) unique not null,<br>
+  - state varchar(50) not null,<br>
+  - country varchar(50) not null<br>
+  #### SQL to create table
+  create table cities(<br>
+c_id int primary key,<br>
+c_name varchar(50) unique not null,<br>
+pincode char(6) unique not null,<br>
+state varchar(50) not null,<br>
+country varchar(50) not null<br>
+);<br>
+##### SQL to establish relationship with addresses table
+alter table addresses<br>
+add column city_id int;<br>
+
+  alter table addresses<br>
+add foreign key(city_id) <br>
+references cities(c_id);<br>
