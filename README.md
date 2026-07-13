@@ -18,8 +18,22 @@
   -email unique not null,<br>
   -phone unique not null,<br>
   -user_type char(1) not null,<br>
-  -is_active char(1) not null,<br>
-  -is_banned char(1) not null.<br>
+  -is_email_verified char(1) not null default 'N' check(is_email_banned in ('Y','N')),<br>
+  -is_active char(1) not null default 'N' check(is_active in('Y','N)),<br>
+  -is_banned char(1) not null default 'N'check(is_banned in('Y','N))<br>
+  ##### SQL to create table
+  create table users(<br>
+user_id int primary key,<br>
+user_name varchar(50) unique not null,<br>
+email varchar(50) unique not null,<br>
+phone int(10) unique not null,<br>
+password varchar(255) unique not null,<br>
+age int(2),<br>
+user_type char(1) not null default 'U' check(user_type in('U','A')),<br>
+is_email_verified char(1) default 'N' check(is_email_verified in('Y','N')),<br>
+is_active char(1) default 'N' check(is_active in('Y','N')),<br>
+is_banned char(1) default 'N' check(is_banned in('Y','N'))<br>
+);<br>
   ## Addresses
   #### Description :- This table stores each users address.each user can have multiple addresses.
   columns:-<br>
