@@ -8,6 +8,8 @@
 - Each Address belongs to one User.
 - Each Address belongs to one City.
 - One City can have many Addresses.
+- There can be multiple inventory of the same products.
+- Self referencing category for each product in the product table.
 ## Users
 #### Description :- This table is used to store userdetails and is filled by the user while signing in.
   colums:-<br>
@@ -78,3 +80,34 @@ add column city_id int;<br>
   alter table addresses<br>
 add foreign key(city_id) <br>
 references cities(c_id);<br>
+
+## Products
+#### Description :- This tables stores information about the products like price , name description etc.
+coloumns:-<br>
+- product_id int primary key,<br>
+- procduct_name varchar(50) not null,<br>
+- product_descrip varchar(500),<br>
+- category_id int not null foreign key category0,<br>
+- price decimal(10,2) not null default 0.00 check(price>=0),<br>
+- visible char(1) not null default 'N' check(visible in ('Y','N'))<br>
+## Inventory
+#### Description :- This table stores information about the products in the products table like quantity , in stock etc
+Columns:-<br>
+- inventory_id int primary key,<br>
+- product_id int foreign key references product(p_id) not null,<br>
+- quantity int not null check(quantity>=0),<br>
+- in_stock char(1) not null default 'Y' check(in_stock in('Y','N'))<br>
+## Categories
+#### Description :- this table stores the catefories of products
+Colums:-<br>
+- category_id int primary key,<br>
+- cat_name varchar(50) unique not null,<br>
+- car_description varchar(255) ,<br>
+- super_category_id int <br>
+## Images
+#### Description :- This table stores images for products.A product may have multiple images.
+Columns:-
+- image_id int primary key
+- image_url varchar(2550 unique not null,
+- p_id references products(product_id) not null,
+- is_primary char(1) not null default 'N' check(is_primary in('Y','N'))
