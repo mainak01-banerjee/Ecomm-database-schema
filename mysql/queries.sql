@@ -4,7 +4,7 @@ create table users(
 user_id int primary key,
 user_name varchar(50) unique not null,
 email varchar(50) unique not null,
-phone int(10) unique not null,
+phone char(10) unique not null,
 password varchar(255)  not null,
 age int(2),
 user_type char(1) not null default 'U' check(user_type in('U','A')),
