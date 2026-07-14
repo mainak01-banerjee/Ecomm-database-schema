@@ -10,8 +10,8 @@
 - Categories
 - Images
 - reveiws
-- reveiw_images
 - orders
+- order_details
 - payments
 - wishlist
 - cart
