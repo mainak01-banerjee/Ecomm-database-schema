@@ -64,3 +64,10 @@ category_descrip varchar(255),
 super_category_id int ,
 foreign key(super_category_id) references categories(category_id)
 );
+-- step 8: we add column category_id to products table and reference it to the categories table.
+alter table products
+add column category_id int not null;
+
+alter table products
+add constraint foreign key(category_id) 
+references categories(category_id);
