@@ -15,4 +15,5 @@
 - payments
 - wishlist
 - cart
+- cart_details
 
