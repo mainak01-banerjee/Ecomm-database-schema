@@ -91,17 +91,10 @@ Columns:-<br>
 - order_date date not null default sysdate,<br>
 - total_amount DECIMAL(10,2) NOT NULL CHECK(total_amount >= 0),<br>
 - updated_at TIMESTAMP,<br>
-- payment_id int foreign key references payments(payment_id),<br>
-- paid char(1) not null default 'N' check(paid in ('Y','N','P')),<br>
 - shipped char(1) not null default 'N' check(shipped in('Y','N','P')),<br>
-- status int not null default 0 check(status between 0 and 4)<br>
-** status **
-  0 - pending
-  1 - processing
-  2 - shipped
-  3 - cancelled
-  4 - returned
-  5 - failed
+- status int not null default 0 check(status between 0 and 5)<br>
+  ** status **
+  - 0 - pending --> 1 - processing --> 2 - shipped --> 3 - cancelled --> 4 - returned --> 5 - payment_failed.
 ## order_details
 #### Description :- This table stores the individual products included in each order.
 Columns:-<br>
@@ -114,5 +107,14 @@ Columns:-<br>
 #### Description :- This table stores the details about the payments for each order
 Columns:-<br>
 - payment_id int primary key,
+- payment_type varchar(20) not null,
+- external_payment_id <data_type> // used for payment gateway payment_id
 - order_id int not null foreign key references orders(order_id),
-- 
+- to_pay decimal(10,2) not null check(to_pay > 0),
+- paid_amount decimal(10,2) not null defualt 0 check(paid_amount>=0),
+- status int not null default 0 check(status between 0 and 2),<br>
+  ** status **
+  - 0 - pending --> 1 - paid --> 2 - failed.
+- created_at timestamp not null default SYSTIMESTAMP,
+- updated_at timestamp,
+- paid_at timestamp.
