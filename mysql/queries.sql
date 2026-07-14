@@ -178,3 +178,10 @@ foreign key (category_id) references categories(category_id),
 foreign key (product_id) references products(product_id),
 foreign key (user_id) references users(user_id)
 );
+-- add column coupon_id to cart table which references the coupons table
+alter table cart
+add column coupon_id int ;
+
+alter table cart 
+add constraint foreign key(coupon_id)
+references coupons(coupon_id);
