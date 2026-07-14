@@ -104,3 +104,11 @@ status int not null default 0 check(status between 0 and 5),
 foreign key (user_id) references users(user_id),
 foreign key (shipping_addr_id) references addresses(addr_id)
 );
+-- step 12: create table order_details
+create table order_details(
+order_id int not null,
+product_id int not null,
+quantity_ordered int  not null,
+price_each decimal(10,2) not null check(price_each>0),
+primary key(order_id,product_id)
+);
