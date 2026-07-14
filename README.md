@@ -17,7 +17,7 @@
 - cart
 - cart_details
 
-# Future planning
+# Future Updates
 - creating triggers to maintain data format consistency
 - creating mock data set for each table
 - creating procedures for frquently used operations and reports.
