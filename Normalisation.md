@@ -11,7 +11,12 @@
 - Each product can have multiple images.
 - Each product can have multiple reveiws.
 - Each user can reveiw a product only once.
-- 
+- Each user can place multiple orders
+- Each order can have one address
+- Each order detail column contain unique combination of order_id and product_id
+- Wishlist table contain unique combination of user_id and product_id
+- Each user can have multiple carts
+- Cart_details table contains unique combinations of cart_id and product_id
 ## Users
 #### Description :- This table is used to store userdetails and is filled by the user while signing in.
   colums:-<br>
@@ -125,4 +130,26 @@ Columns:-<br>
 - product_id int not null foreign key references products(product_id),
 - added_at timeStamp not null default(current_timestamp()),
 - primary key(user_id,product_id)
-
+## Cart
+#### Description :- This table stores summary of cart_details table.
+Columns:-<br>
+- cart_id int primary key,
+- user_id int not null foreign key references users(user_id),
+- created_at datetime not null default (currentdatetime()),
+- coupon_id int foreign key references coupons(coupon_id),
+- address_id int  foreign key references addresses(addr_id),
+- total_amount decimal(10,2) not null check(total_amount>=0),
+- shipping_charge decimal(10,2) not null default 0 check(shipping_charge>=0),
+- updated_at datetime ,
+- abandonned_at datetime<br>
+- is_active char(1) not null default 'N' check(is_active in('Y','N'))
+## cart_details
+#### Description :- This table stores the details about products,quantity,price_each stored in a users cart.
+Columns:-<br>
+- cart_id int foreign key references cart(cart_id) not null,
+- product_id int not null foreign key references products(product_id),
+- added_at datetime not null default(currentdatetime()),
+- quantity int not null default 1 check(quantity>0),
+- price_each decimal(10,2) not null check(price_each>0),
+- added char(1) not null default 'Y' check(added in('Y','N'))
+- primary key(cart_id,product_id)<br>
