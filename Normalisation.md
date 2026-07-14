@@ -43,31 +43,31 @@ is_banned char(1) default 'N' check(is_banned in('Y','N'))<br>
   - floor_no varchar(3),<br>
   - street_name varchar(500) not null,<br>
   - land_mark varchar(100),<br>
-  - city_id number references cities(c_id),<br>
+  - city_id number references cities(city_id),<br>
   - user_id references users(user_id)<br>
   #### SQL to create table
   create table addresses (<br>
 addr_id int primary key,<br>
-house_no varchar(20) ,<br>
+house_no varchar(20),<br>
 floor_no varchar(3),<br>
 street_name varchar(500) not null,<br>
-land_mark varchar(100) ,<br>
-user_id int ,<br>
+land_mark varchar(100),<br>
+user_id int,<br>
 foreign key (user_id) references users(user_id)<br>
 );<br>
 - we add column city_id later after creating the cities table.
   ## Cities
   #### Description :- This table stores the cities and their pincode that the business offers delivery to.
   columns:-<br>
-  - c_id number Primary key,<br>
-  - c_name varchar(50) unique not null,<br>
+  - city_id int Primary key,<br>
+  - city_name varchar(50) unique not null,<br>
   - pincode char(6) unique not null,<br>
   - state varchar(50) not null,<br>
   - country varchar(50) not null<br>
   #### SQL to create table
   create table cities(<br>
-c_id int primary key,<br>
-c_name varchar(50) unique not null,<br>
+city_id int primary key,<br>
+city_name varchar(50) unique not null,<br>
 pincode char(6) unique not null,<br>
 state varchar(50) not null,<br>
 country varchar(50) not null<br>
@@ -106,6 +106,7 @@ Colums:-<br>
 #### Description :- This table stores images for products.A product may have multiple images.
 Columns:-
 - image_id int primary key,<br>
-- image_url varchar(2550 unique not null,<br>
+- image_url varchar(500) not null,<br>
+- image_descrip varchar(500),<br>
 - product_id references products(product_id) not null,<br>
 - is_primary char(1) not null default 'N' check(is_primary in('Y','N'))<br>
