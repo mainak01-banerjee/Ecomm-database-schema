@@ -91,3 +91,16 @@ foreign key(user_id) references users(user_id),
 foreign key (product_id) references products(product_id),
 unique(user_id,product_id)
 );
+-- step 11: create the orders table
+create table orders(
+order_id int primary key,
+user_id int not null,
+shipping_addr_id int not null,
+order_date date not null default (current_date()),
+total_amount decimal(10,2) not null check(total_amount>=0),
+updated_at timestamp ,
+shipped char(1) not null default 'N' check(shipped in('Y','N','P')),
+status int not null default 0 check(status between 0 and 5),
+foreign key (user_id) references users(user_id),
+foreign key (shipping_addr_id) references addresses(addr_id)
+);
