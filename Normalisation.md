@@ -117,4 +117,12 @@ Columns:-<br>
   - 0 - pending --> 1 - paid --> 2 - failed.
 - created_at timestamp not null default SYSTIMESTAMP,
 - updated_at timestamp,
-- paid_at timestamp.
+- paid_at timestamp.<br>
+## Wishlist
+#### Description :- This table stores multiple product they wish to buy for each user so they can order them later (we might have to create a trigger to restrict the number of products added by each user.)
+Columns:-<br>
+- user_id int not null foreign key references users(user_id),
+- product_id int not null foreign key references products(product_id),
+- added_at timeStamp not null default(current_timestamp()),
+- primary key(user_id,product_id)
+
