@@ -9,4 +9,8 @@
 - Inventory
 - Categories
 - Images
+- reveiws
+- reveiw_images
+- wishlist
+- cart
 
