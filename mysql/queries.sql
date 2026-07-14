@@ -160,3 +160,21 @@ primary key(cart_id,product_id),
 foreign key (cart_id) references cart(cart_id),
 foreign key (product_id) references products(product_id)
 );
+-- step 17: create table coupons
+create table coupons(
+coupon_id int primary key,
+coupon_name varchar(50) unique not null,
+discount_type char(1) not null default 'A' check(discount_type in('A','P')),
+discount_value decimal(10,2) not null default 0 ,
+max_value decimal(10,2) not null default 0 ,
+min_order_amnt decimal(10,2) not null check(min_order_amnt>=0) ,
+category_id int,
+product_id int ,
+user_id int ,
+created_at datetime not null default current_timestamp,
+expire_at datetime,
+is_active char(1) not null default 'N' check(is_active in('Y','N')),
+foreign key (category_id) references categories(category_id),
+foreign key (product_id) references products(product_id),
+foreign key (user_id) references users(user_id)
+);
