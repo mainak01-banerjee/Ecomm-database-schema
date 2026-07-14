@@ -23,3 +23,11 @@ foreign key (user_id) references users(user_id)
 );
 -- note there is no city_id column in the address table becuase cities is not created yet and for it be the foreign key we need to reference the citites table.
 -- we will alter the table address to add the column city_id after we create the citites table.
+-- we create cities table 
+create table cities(
+city_id int primary key,
+city_name varchar(50) unique not null,
+pincode char(6) unique not null,
+state varchar(50) not null,
+country varchar(50) not null
+);
