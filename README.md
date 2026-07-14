@@ -11,6 +11,8 @@
 - Images
 - reveiws
 - reveiw_images
+- orders
+- payments
 - wishlist
 - cart
 
