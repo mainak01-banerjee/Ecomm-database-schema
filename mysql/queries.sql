@@ -49,3 +49,10 @@ visible char(1) not null default 'N' check(visible in ('Y','N'))
 );
 -- catergory_id column is not added as catefories table does not exist in the database currently.
 -- we add it later after creating the categories table and reference it .
+-- step 6: create the inventory table
+create table inventory(
+inventory_id int primary key,
+product_id int not null,
+quantity int not null check(quantity>=0),
+foreign key(product_id) references products(product_id)
+);
