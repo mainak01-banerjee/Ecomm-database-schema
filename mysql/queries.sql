@@ -148,3 +148,15 @@ foreign key (user_id) references users(user_id),
 foreign key (address_id) references addresses(addr_id)
 );
 -- we did not add column coupon_id as the table does not exist yet . we have to alter this table and add it later after its creation.
+-- step 16: create table cart_details
+create table cart_details(
+cart_id int not null,
+product_id int not null,
+added_at datetime not null default current_timestamp,
+quantity int not null default 1 check(quantity>0),
+price_each decimal(10,2) not null check(price_each>0),
+added char(1) not null default 'Y' check(added in('Y','N')),
+primary key(cart_id,product_id),
+foreign key (cart_id) references cart(cart_id),
+foreign key (product_id) references products(product_id)
+);
