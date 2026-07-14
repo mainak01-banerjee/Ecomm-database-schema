@@ -70,7 +70,7 @@ Columns:-
 - image_descrip varchar(500),<br>
 - product_id references products(product_id) not null,<br>
 - is_primary char(1) not null default 'N' check(is_primary in('Y','N'))<br>
-##Reveiws
+## Reveiws
 #### Description :- This table stored product reveiws.
 Columns:-<br>
 - reveiw_id int primary key,<br>
