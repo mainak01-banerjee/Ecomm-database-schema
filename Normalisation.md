@@ -9,6 +9,9 @@
 - Each product can have one category.
 - Categories can have multiple super categories.
 - Each product can have multiple images.
+- Each product can have multiple reveiws.
+- Each user can reveiw a product only once.
+- 
 ## Users
 #### Description :- This table is used to store userdetails and is filled by the user while signing in.
   colums:-<br>
@@ -78,4 +81,38 @@ Columns:-<br>
 - user_id int not null foreign key references users(user_id),<br>
 - stars int default 5 check(stars between 1 and 5) not null,<br>
 - description varchar(500),<br>
-- unique (product_id, user_id)
+- unique (product_id, user_id)<br>
+## Orders
+##### Description :- This table stores summarized information about each order, including shipping details, payment information, and order status.
+Columns:-<br>
+- order_id int primary Key<br>
+- user_id int not null foreign key references users(user_id),<br>
+- shipping_addr_id int not null foreign key references addresses(addr_id),<br>
+- order_date date not null default sysdate,<br>
+- total_amount DECIMAL(10,2) NOT NULL CHECK(total_amount >= 0),<br>
+- updated_at TIMESTAMP,<br>
+- payment_id int foreign key references payments(payment_id),<br>
+- paid char(1) not null default 'N' check(paid in ('Y','N','P')),<br>
+- shipped char(1) not null default 'N' check(shipped in('Y','N','P')),<br>
+- status int not null default 0 check(status between 0 and 4)<br>
+** status **
+  0 - pending
+  1 - processing
+  2 - shipped
+  3 - cancelled
+  4 - returned
+  5 - failed
+## order_details
+#### Description :- This table stores the individual products included in each order.
+Columns:-<br>
+- order_id int not null foreign key references orders(order_id),<br>
+- product_id int not null foreign key references products(product_id),<br>
+- quantity_ordered int not null default 1 check(quantity_ordered>=1),<br>
+- price_each decimal(10,2) not null check(price_each>0),<br>
+- primary key(order_id,product_id)<br>
+## Payments
+#### Description :- This table stores the details about the payments for each order
+Columns:-<br>
+- payment_id int primary key,
+- order_id int not null foreign key references orders(order_id),
+- 
