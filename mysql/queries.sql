@@ -39,3 +39,13 @@ add column city_id int;
 alter table addresses
 add foreign key(city_id)
 references cities(c_id);
+-- step 5: create the products table
+create table products(
+product_id int primary key,
+product_name varchar(50) not null,
+product_descrip varchar(500),
+price decimal(10,2) not null default 0 check(price>=0),
+visible char(1) not null default 'N' check(visible in ('Y','N'))
+);
+-- catergory_id column is not added as catefories table does not exist in the database currently.
+-- we add it later after creating the categories table and reference it .
