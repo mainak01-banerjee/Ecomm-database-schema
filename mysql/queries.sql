@@ -56,3 +56,11 @@ product_id int not null,
 quantity int not null check(quantity>=0),
 foreign key(product_id) references products(product_id)
 );
+-- step 7: create the categories table
+create table categories(
+category_id int primary key,
+category_name varchar(50) unique not null,
+category_descrip varchar(255),
+super_category_id int ,
+foreign key(super_category_id) references categories(category_id)
+);
