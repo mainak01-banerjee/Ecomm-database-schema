@@ -110,3 +110,12 @@ Columns:-
 - image_descrip varchar(500),<br>
 - product_id references products(product_id) not null,<br>
 - is_primary char(1) not null default 'N' check(is_primary in('Y','N'))<br>
+##Reveiws
+#### Description :- This table stored product reveiws.
+Columns:-<br>
+- reveiw_id int primary key,<br>
+- product_id int not null foreign key references products(product_id),<br>
+- user_id int not null foreign key references users(user_id),<br>
+- stars int default 5 check(stars between 1 and 5) not null,<br>
+- description varchar(500),<br>
+- unique (product_id, user_id)
