@@ -80,3 +80,14 @@ product_id int not null,
 is_primary char(1) default 'N' check (is_primary in ('Y','N')),
 foreign key(product_id) references products(product_id)
 );
+-- step 10: create the the reveiws table.
+create table reveiws (
+reveiw_id int primary key,
+user_id int not null,
+product_id int not null,
+stars int default 5 check(stars between 1 and 5),
+description varchar(255),
+foreign key(user_id) references users(user_id),
+foreign key (product_id) references products(product_id),
+unique(user_id,product_id)
+);
