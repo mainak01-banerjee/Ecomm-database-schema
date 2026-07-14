@@ -112,3 +112,16 @@ quantity_ordered int  not null,
 price_each decimal(10,2) not null check(price_each>0),
 primary key(order_id,product_id)
 );
+-- step 13: create table payments.
+create table payments(
+payment_id int primary key,
+external_payment_id varchar(255),
+order_id int not null ,
+to_pay decimal(10,2) not null check(to_pay>0),
+paid_amount decimal(10,2) not null default 0 check(paid_amount>=0),
+status int not null default 0 check(status between 0 and 2),
+created_at timestamp not null default (current_timestamp()),
+updated_at timestamp,
+paid_at timestamp,
+foreign key(order_id) references orders(order_id) 
+);
