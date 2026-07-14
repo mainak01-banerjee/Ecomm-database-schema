@@ -125,3 +125,11 @@ updated_at timestamp,
 paid_at timestamp,
 foreign key(order_id) references orders(order_id) 
 );
+-- step 14:: create table wishlist
+create table wishlist(
+user_id int not null,
+product_id int not null,
+foreign key(user_id) references users(user_id),
+foreign key (product_id) references products(product_id),
+primary key(user_id,product_id)
+);
