@@ -153,3 +153,21 @@ Columns:-<br>
 - price_each decimal(10,2) not null check(price_each>0),
 - added char(1) not null default 'Y' check(added in('Y','N'))
 - primary key(cart_id,product_id)<br>
+## Coupons
+#### Description :- This table stores all the coupon codes that the website is offering.
+Column:-<br>
+- coupon_id int primary key,
+- coupon_name varchar(50) unique not null,
+- discount_type char(1) not null default 'A' check(discount_type in('A','P'))
+- discount_value decimal(10,2) not null default 0 ,
+- max_value decimal(10,2) not null default 0 ,
+- min_order_amnt decimal(10,2) not null check(min_order_amnt>=0) ,
+- category_id int foreign key references categories(category_id),
+- product_id int forign key references products(product_id),
+- user_id int foreign key references users(user_id),
+- created_at datetime not null default sysdatetime,
+- expire_at datetime,
+- is_active char(1) not null default 'N' check(is_active in('Y','N'))
+  **discount_type**
+  - A - Fixed Amount
+  - P - Percentage
