@@ -1,4 +1,5 @@
 -- MYSQL queries for creating the data base schema
+-- step 1: create the users table
 create table users(
 user_id int primary key,
 user_name varchar(50) unique not null,
@@ -11,7 +12,7 @@ is_email_verified char(1) default 'N' check(is_email_verified in('Y','N')),
 is_active char(1) default 'N' check(is_active in('Y','N')),
 is_banned char(1) default 'N' check(is_banned in('Y','N'))
 );
--- step 2 : create the address table
+-- step 2: create the address table
 create table addresses (
 addr_id int primary key,
 house_no varchar(20),
@@ -23,7 +24,7 @@ foreign key (user_id) references users(user_id)
 );
 -- note there is no city_id column in the address table becuase cities is not created yet and for it be the foreign key we need to reference the citites table.
 -- we will alter the table address to add the column city_id after we create the citites table.
--- we create cities table 
+-- step 3: we create cities table 
 create table cities(
 city_id int primary key,
 city_name varchar(50) unique not null,
@@ -31,3 +32,10 @@ pincode char(6) unique not null,
 state varchar(50) not null,
 country varchar(50) not null
 );
+-- step 4: we now add city_id column to the addresses table and establish it as foreign key which references the cities table
+alter table addresses
+add column city_id int;
+
+alter table addresses
+add foreign key(city_id)
+references cities(c_id);
