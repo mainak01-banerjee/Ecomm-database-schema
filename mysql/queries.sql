@@ -71,3 +71,12 @@ add column category_id int not null;
 alter table products
 add constraint foreign key(category_id) 
 references categories(category_id);
+-- step 9: create table images
+create table images(
+image_id int primary key,
+image_url varchar(500) not null,
+image_descrip varchar(255),
+product_id int not null,
+is_primary char(1) default 'N' check (is_primary in ('Y','N')),
+foreign key(product_id) references products(product_id)
+);
