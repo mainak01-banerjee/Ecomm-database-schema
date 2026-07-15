@@ -43,6 +43,7 @@ references cities(c_id);
 create table products(
 product_id int primary key,
 product_name varchar(50) not null,
+product_brand varchar(50) not null,
 product_descrip varchar(500),
 price decimal(10,2) not null default 0 check(price>=0),
 visible char(1) not null default 'N' check(visible in ('Y','N'))
