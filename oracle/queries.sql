@@ -70,3 +70,103 @@ alter table products
 add constraint fk_pro_cat
 foreign key(category_id)
 references categories(category_id);
+-- step 9: create table images
+create table images(
+image_id number primary key,
+image_url varchar(500) not null,
+image_descrip varchar(255),
+product_id number not null references products(product_id),
+is_primary char(1) default 'N' not null check (is_primary in ('Y','N'))
+);
+-- step 10: create the the reveiws table.
+create table reviews (
+review_id number primary key,
+user_id number not null references users(user_id),
+product_id number not null references products(product_id),
+stars number default 5 not null check(stars between 1 and 5),
+description varchar(255),
+unique(user_id,product_id)
+);
+-- step 11: create the orders table
+create table orders(
+order_id number primary key,
+user_id number not null references users(user_id),
+shipping_addr_id number not null references addresses(addr_id),
+order_date date default SYSDATE not null,
+total_amount number(10,2) not null check(total_amount>=0),
+updated_at timestamp ,
+shipped char(1) default 'N' not null check(shipped in('Y','N','P')),
+status int default 0 not null check(status between 0 and 5)
+);
+-- step 12: create table order_details
+create table order_details(
+order_id number not null references orders(order_id),
+product_id number not null references products(product_id),
+quantity_ordered number  not null,
+price_each number(10,2) not null check(price_each>0),
+primary key(order_id,product_id)
+);
+-- step 13: create table payments.
+create table payments(
+payment_id number primary key,
+external_payment_id varchar(255),
+order_id number not null references orders(order_id) ,
+to_pay number(10,2) not null check(to_pay>0),
+paid_amount number(10,2) default 0 not null check(paid_amount>=0),
+status number default 0 not null check(status between 0 and 2),
+created_at timestamp default SYSTIMESTAMP not null,
+updated_at timestamp,
+paid_at timestamp
+);
+-- step 14:: create table wishlist
+create table wishlist(
+user_id number not null references users(user_id),
+product_id int not null references products(product_id),
+primary key(user_id,product_id)
+);
+-- step 15: create table cart
+create table cart(
+cart_id number primary key,
+user_id number not null references users(user_id),
+created_at timestamp default SYSTIMESTAMP not null,
+address_id number references addresses(addr_id),
+total_amnt decimal(10,2) default 0 not null check(total_amnt>=0),
+shipping_charge decimal(10,2)  default 0 check(shipping_charge>=0),
+updated_at timestamp,
+abandonned_at timestamp,
+is_active char(1) default 'Y' not null check(is_active in('Y','N'))
+);
+-- we did not add column coupon_id as the table does not exist yet . we have to alter this table and add it later after its creation.
+-- step 16: create table cart_details
+create table cart_details(
+cart_id number not null references cart(cart_id),
+product_id number not null references products(product_id),
+added_at timestamp default SYSTIMESTAMP not null ,
+quantity number default 1 not null check(quantity>0),
+price_each number(10,2) not null check(price_each>0),
+added char(1)  default 'Y' not null check(added in('Y','N')),
+primary key(cart_id,product_id)
+);
+-- step 17: create table coupons
+create table coupons(
+coupon_id number primary key,
+coupon_name varchar(50) unique not null,
+discount_type char(1) default 'A' not null check(discount_type in('A','P')),
+discount_value number(10,2) default 0 not null ,
+max_value number(10,2) default 0 not null,
+min_order_amnt number(10,2) not null check(min_order_amnt>=0) ,
+category_id number references categories(category_id),
+product_id number references products(product_id),
+user_id number references users(user_id),
+created_at timestamp default SYSTIMESTAMP not null,
+expire_at timestamp,
+is_active char(1) default 'N' not null check(is_active in('Y','N'))
+);
+-- add column coupon_id to cart table which references the coupons table
+alter table cart
+add coupon_id number ;
+
+alter table cart 
+add constraint fk_car_cou
+foreign key(coupon_id)
+references coupons(coupon_id);
