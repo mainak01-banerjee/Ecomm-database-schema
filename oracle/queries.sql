@@ -39,3 +39,13 @@ add city_id number;
  add constraint fk_city
  foreign key(city_id)
  references cities(city_id);
+-- step 5: create the products table
+create table products(
+product_id number primary key,
+product_name varchar(50) not null,
+product_descrip varchar(500),
+price number(10,2) default 0 not null check(price>=0),
+visible char(1) default 'Y' not null check(visible in('Y','N'))
+);
+-- catergory_id column is not added as catefories table does not exist in the database currently.
+-- we add it later after creating the categories table and reference it .
