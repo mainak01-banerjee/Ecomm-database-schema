@@ -12,3 +12,12 @@ is_email_verified char(1) default 'N' not null check(is_email_verified in('Y','N
 is_active char(1) default 'N' not null check(is_active in ('Y','N')),
 is_banned char(1) default 'N' not null check(is_banned in ('Y','N'))
 );
+-- step 2 create table addresses
+create table addresses (
+addr_id number primary key,
+house_no varchar(20),
+floor_no varchar(3),
+street_name varchar(500) not null,
+land_mark varchar(100),
+user_id int not null references users(user_id)
+);
