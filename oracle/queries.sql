@@ -31,3 +31,11 @@ pincode char(6) unique not null,
 state varchar(50) not null,
 country varchar(50) not null
 );
+-- step 4: we now add city_id column to the addresses table and establish it as foreign key which references the cities table
+alter table addresses
+add city_id number;
+
+ alter table addresses
+ add constraint fk_city
+ foreign key(city_id)
+ references cities(city_id);
