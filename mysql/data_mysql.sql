@@ -155,3 +155,99 @@ VALUES
 (38,'58','2','Main Bazaar','Clock Tower',28,27),
 (39,'174','6','VIP Colony','City Hospital',29,22),
 (40,'29','3','Station Road','Railway Junction',30,11);
+
+
+
+-- data for catergories table
+INSERT INTO categories (
+    category_id,
+    category_name,
+    category_descrip,
+    super_category_id
+)
+VALUES
+    (1,  'Electronics',              'Electronic devices and gadgets',                     NULL),
+    (2,  'Fashion',                  'Clothing, footwear and fashion accessories',         NULL),
+    (3,  'Home & Kitchen',           'Furniture and kitchen essentials',                   NULL),
+    (4,  'Books',                    'Books across different genres',                      NULL),
+    (5,  'Sports & Fitness',         'Sports and fitness equipment',                       NULL),
+    (6,  'Beauty & Personal Care',   'Beauty and grooming products',                       NULL),
+    (7,  'Toys & Games',             'Toys and indoor games',                              NULL),
+    (8,  'Groceries',                'Daily grocery essentials',                           NULL),
+    (9,  'Automotive',               'Vehicle accessories and maintenance products',       NULL),
+    (10, 'Pet Supplies',             'Food and accessories for pets',                      NULL),
+
+    (11, 'Mobiles',                  'Smartphones and feature phones',                     1),
+    (12, 'Laptops',                  'Laptops and notebooks',                              1),
+    (13, 'Audio',                    'Headphones, speakers and audio devices',             1),
+    (14, 'Cameras',                  'DSLRs, mirrorless and action cameras',               1),
+
+    (15, 'Mens Clothing',            'Clothing for men',                                   2),
+    (16, 'Womens Clothing',          'Clothing for women',                                 2),
+    (17, 'Footwear',                 'Shoes, sandals and sneakers',                        2),
+    (18, 'Watches',                  'Smart and analog watches',                           2),
+
+    (19, 'Furniture',                'Home and office furniture',                          3),
+    (20, 'Kitchen Appliances',       'Kitchen electronics and appliances',                 3),
+
+    (21, 'Fiction',                  'Novels and fictional stories',                       4),
+    (22, 'Educational',              'Academic and educational books',                     4),
+
+    (23, 'Gym Equipment',            'Exercise and gym equipment',                         5),
+    (24, 'Outdoor Sports',           'Outdoor sports equipment',                           5),
+
+    (25, 'Skin Care',                'Face and skin care products',                        6),
+    (26, 'Hair Care',                'Hair care and styling products',                     6),
+
+    (27, 'Educational Toys',         'Learning toys for children',                         7),
+
+    (28, 'Beverages',                'Tea, coffee and soft drinks',                        8),
+
+    (29, 'Bike Accessories',         'Accessories for motorcycles',                        9),
+
+    (30, 'Dog Food',                 'Food and nutrition for dogs',                        10);
+    
+    INSERT INTO categories (
+    category_id,
+    category_name,
+    category_descrip,
+    super_category_id
+)
+VALUES
+    -- Electronics
+    (31, 'Tablets',             'Android and iPad tablets',                          1),
+    (32, 'Computer Accessories','Keyboards, mice, monitors and accessories',         1),
+    (33, 'Smart Home',          'Smart home automation devices',                      1),
+
+    -- Fashion
+    (34, 'Bags & Luggage',      'Travel bags, backpacks and luggage',                 2),
+    (35, 'Jewellery',           'Fashion and precious jewellery',                     2),
+    (36, 'Kids Clothing',       'Clothing for infants and children',                  2),
+
+    -- Home & Kitchen
+    (37, 'Home Decor',          'Decorative items and furnishings',                   3),
+    (38, 'Storage & Organization','Storage boxes, shelves and organizers',            3),
+    (39, 'Lighting',            'Indoor and outdoor lighting solutions',              3),
+
+    -- Books
+    (40, 'Comics & Manga',      'Comic books, manga and graphic novels',              4),
+    (41, 'Self Help',           'Self improvement and motivational books',            4),
+
+    -- Sports & Fitness
+    (42, 'Cycling',             'Bicycles and cycling accessories',                   5),
+    (43, 'Yoga',                'Yoga mats, blocks and accessories',                  5),
+
+    -- Beauty & Personal Care
+    (44, 'Fragrances',          'Perfumes, deodorants and body sprays',               6),
+    (45, 'Makeup',              'Cosmetics and beauty essentials',                    6),
+
+    -- Toys & Games
+    (46, 'Board Games',         'Board games and family games',                       7),
+    (47, 'Remote Control Toys', 'RC cars, drones and helicopters',                    7),
+
+    -- Groceries
+    (48, 'Snacks',              'Biscuits, chips and ready-to-eat snacks',            8),
+
+    -- Pet Supplies
+    (49, 'Cat Food',            'Food and nutrition for cats',                       10),
+    (50, 'Pet Accessories',     'Leashes, toys, beds and grooming accessories',      10);
