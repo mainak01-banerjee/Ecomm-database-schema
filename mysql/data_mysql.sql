@@ -251,3 +251,4 @@ VALUES
     -- Pet Supplies
     (49, 'Cat Food',            'Food and nutrition for cats',                       10),
     (50, 'Pet Accessories',     'Leashes, toys, beds and grooming accessories',      10);
+-- run the data_mysql.sql script after this
