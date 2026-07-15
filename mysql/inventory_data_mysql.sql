@@ -1,3 +1,5 @@
+-- CAUTION!!!!!!
+-- before this script run the products_data_mysql.sql script
 -- inventory table data
  /*===========================================================
   INVENTORY (1 - 50)
