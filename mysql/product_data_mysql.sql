@@ -1,3 +1,5 @@
+-- CAUTION!!!!!
+-- before this script execute data_mysql.sql script
 -- data for products table
 INSERT INTO products (product_id,product_name,product_descrip,price,visible,category_id,product_brand)
 VALUES
@@ -171,4 +173,4 @@ VALUES
 
     (99, 'Sterling Silver Chain',              'Elegant sterling silver chain.',                             3499.00, 'Y', 35, 'Giva'),
     (100,'Kids Cotton T-Shirt',                'Soft cotton T-shirt for children.',                           599.00, 'Y', 36, 'Max');
-
+-- execute next script inventory_data_mysql.sql
