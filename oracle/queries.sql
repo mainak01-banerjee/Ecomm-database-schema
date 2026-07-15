@@ -62,3 +62,11 @@ category_name varchar(50) unique not null,
 category_descrip varchar(255),
 super_category_id number  references categories(category_id)
 );
+-- step 8: we add column category_id to products table and reference it to the categories table.
+alter table products
+add category_id number not null;
+
+alter table products
+add constraint fk_pro_cat
+foreign key(category_id)
+references categories(category_id);
