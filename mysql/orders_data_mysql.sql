@@ -297,3 +297,4 @@ VALUES
 (50,58,1,1099.00),
 (50,59,1,449.00),
 (50,60,1,699.00);
+-- execute payments_data_mysql.sql script after this script.
