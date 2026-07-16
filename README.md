@@ -1,6 +1,15 @@
 # Tittle - Ecomm-Database_schema.
  Description - This project is a data base schema for an ecommerce website.It lists all the tables required in an ecommerce business application,their relationship to each other and the list of reason why this every table exists.
  Technology - This database schema is designed using the structured Query language and uses the oracle 10g database and MYSQL.
+
+# Future Updates
+- creating triggers to maintain data format consistency
+- creating mock data set for each table
+- creating procedures for frquently used operations and reports.
+- Create views for common queries and business insights.
+- Write sample SQL queries demonstrating CRUD operations, joins, aggregate functions, window functions, and subqueries.
+- Implement transactions for critical operations such as order placement and payment processing.
+ 
 # Table List
 - Users
 - Addresses
@@ -17,13 +26,7 @@
 - cart
 - cart_details
 
-# Future Updates
-- creating triggers to maintain data format consistency
-- creating mock data set for each table
-- creating procedures for frquently used operations and reports.
-- Create views for common queries and business insights.
-- Write sample SQL queries demonstrating CRUD operations, joins, aggregate functions, window functions, and subqueries.
-- Implement transactions for critical operations such as order placement and payment processing.
+
 # 📊 Dataset Metadata
 
 This project contains a realistic sample dataset for a production-style e-commerce database. The data has been generated to simulate actual customer activity, inventory management, order processing, payments, shopping carts, wishlists, product reviews, and promotional campaigns.
