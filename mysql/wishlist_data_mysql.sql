@@ -238,3 +238,4 @@ VALUES
 
 (30,18),
 (30,89);
+-- after this script execute the cart_data_mysql.sql script
