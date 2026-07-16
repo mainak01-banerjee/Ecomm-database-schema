@@ -590,3 +590,4 @@ VALUES
 (362,'/images/products/product_100/open.jpg','Cap Open',100,'N'),
 (363,'/images/products/product_100/bottom.jpg','Base View',100,'N');
 
+-- run the reviews_data_mysql.sql script after this
