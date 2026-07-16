@@ -155,3 +155,4 @@ VALUES
 (118,28,85,4,'Refreshing flavor and good aroma.'),
 (119,29,86,2,'My dog did not like this food much.'),
 (120,30,87,1,'Product arrived damaged and unusable.');
+-- after this script execute orders_data_mysql.sql script
