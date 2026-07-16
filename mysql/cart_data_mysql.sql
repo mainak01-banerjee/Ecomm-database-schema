@@ -128,3 +128,4 @@ VALUES
 -- Cart 20 (₹1598)
 (20,21,'2025-07-09 13:21:00',1,699.00,'Y'),
 (20,28,'2025-07-09 13:22:00',1,799.00,'Y');
+-- after this execute the coupons_data_mysql.sql script
